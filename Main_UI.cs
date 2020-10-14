@@ -3590,9 +3590,8 @@ namespace Robot_with_AOI
                         CvInvoke.cvShowImage("Real", outReal);
                         CvInvoke.cvShowImage("Imaginary ", outIm);
 
-
                         //Img_G3.Save(pic_count.ToString() + "_AF.bmp");
-                        u = Img_G3.GetAverage().Intensity;
+                        //u = Img_G3.GetAverage().Intensity;
                         AF_width = Img_G3.Width;
                         AF_height = Img_G3.Height;
                         Var = 0.0;
@@ -3600,8 +3599,8 @@ namespace Robot_with_AOI
                         {
                             for (int j = 0; j < AF_height; j++)
                             {
-                                Var += Math.Pow(Img_G3[j, i].Intensity - u, 2);
-                                //Var += Math.Sqrt(Math.Pow(outReal[j, i], 2) + (Math.Pow(outIm[j, i], 2) * Math.Abs(Math.Atan2(outIm[j, i], outReal[j, i]))));
+                                //Var += Math.Pow(Img_G3[j, i].Intensity - u, 2);
+                                Var += Math.Sqrt(Math.Pow(outReal[j, i], 2) + (Math.Pow(outIm[j, i], 2) * Math.Abs(Math.Atan2(outIm[j, i], outReal[j, i]))));
                             }
                         }
                         Var /= (AF_width * AF_height);
