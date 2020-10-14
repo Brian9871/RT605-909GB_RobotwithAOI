@@ -3578,7 +3578,7 @@ namespace Robot_with_AOI
                         //FFT Method
                         Dft_Img_G3 = Img_G1.Copy(rect).Convert<Gray, float>();
                         IntPtr complexImage = CvInvoke.cvCreateImage(Dft_Img_G3.Size, Emgu.CV.CvEnum.IPL_DEPTH.IPL_DEPTH_32F, 2);
-                        CvInvoke.cvSetZero(complexImage); // Initialize all elements to Zero 
+                        CvInvoke.cvSetZero(complexImage);
                         CvInvoke.cvSetImageCOI(complexImage, 1);
                         CvInvoke.cvCopy(Dft_Img_G3, complexImage, IntPtr.Zero);
                         CvInvoke.cvSetImageCOI(complexImage, 0);
@@ -3592,7 +3592,7 @@ namespace Robot_with_AOI
 
 
                         //Img_G3.Save(pic_count.ToString() + "_AF.bmp");
-                        //u = Img_G3.GetAverage().Intensity;
+                        u = Img_G3.GetAverage().Intensity;
                         AF_width = Img_G3.Width;
                         AF_height = Img_G3.Height;
                         Var = 0.0;
@@ -3600,8 +3600,8 @@ namespace Robot_with_AOI
                         {
                             for (int j = 0; j < AF_height; j++)
                             {
-                                //Var += Math.Pow(Img_G3[j, i].Intensity - u, 2);
-                                Var += Math.Sqrt(Math.Pow(outReal[j, i], 2) + (Math.Pow(outIm[j, i], 2) * Math.Abs(Math.Atan2(outIm[j, i], outReal[j, i]))));
+                                Var += Math.Pow(Img_G3[j, i].Intensity - u, 2);
+                                //Var += Math.Sqrt(Math.Pow(outReal[j, i], 2) + (Math.Pow(outIm[j, i], 2) * Math.Abs(Math.Atan2(outIm[j, i], outReal[j, i]))));
                             }
                         }
                         Var /= (AF_width * AF_height);
